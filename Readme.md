@@ -111,12 +111,12 @@ where `{latest version}` corresponds to published version in [ ![Download](https
 
 If you wish to extend ValidateTor, use the `RegexMatcher` class. Create your own regex matchers by passing in a valid regex string to `validate()` or `find()`
 
-    |Method Name                                 |Description                               |Return Type
-    |--------------------------------------------|------------------------------------------|-------------
-    |`validate(String dataStr, String regex)`    |Validate string against a regex           | boolean
-    |`validate(String dataStr, Pattern pattern)` |Validate string against a pattern         | boolean
-    |`find(String dataStr, String regex)`        |Find in string against a regex            | boolean
-    |`find(String dataStr, Pattern pattern)`     |Find in string against a pattern          | boolean
+  |Method Name                                 |Description                               |Return Type
+  |--------------------------------------------|------------------------------------------|-------------
+  |`validate(String dataStr, String regex)`    |Validate string against a regex           | boolean
+  |`validate(String dataStr, Pattern pattern)` |Validate string against a pattern         | boolean
+  |`find(String dataStr, String regex)`        |Find in string against a regex            | boolean
+  |`find(String dataStr, Pattern pattern)`     |Find in string against a pattern          | boolean
 
 
 # Pull Requests
