@@ -47,7 +47,7 @@ bintray {
     vcsUrl = gitUrl
     licenses = allLicenses
     githubRepo = githubRepository //Optional Github repository
-    githubReleaseNotesFile = 'README.md' //Optional Github readme file
+    githubReleaseNotesFile = 'Readme.md' //Optional Github readme file
     publish = false
     publicDownloadNumbers = true
     version {
