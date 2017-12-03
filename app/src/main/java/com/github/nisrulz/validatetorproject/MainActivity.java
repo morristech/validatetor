@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.github.nisrulz.validatetor.ValidateTor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,12 +18,16 @@ public class MainActivity extends AppCompatActivity {
   private EditText edt_password;
   private EditText edt_creditcard;
 
+  private ValidateTor mValidateTor;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
     setUpUiWidgets();
+
+    mValidateTor = new ValidateTor();
   }
 
   private void setUpUiWidgets() {
@@ -42,17 +49,48 @@ public class MainActivity extends AppCompatActivity {
 
   private void validateCreditCardField(EditText editText) {
     String str = editText.getText().toString();
-    // TODO: Validate Credit Card Number Field
+
+    if (mValidateTor.isEmpty(str)) {
+      editText.setError("Field is empty!");
+    }
+
+    if (!mValidateTor.validateCreditCard(str)) {
+      editText.setError("Invalid Credit Card number!");
+    } else {
+      Toast.makeText(this, "Valid Credit Card Number!", Toast.LENGTH_SHORT).show();
+    }
   }
 
   private void validatePasswordField(EditText editText) {
     String str = editText.getText().toString();
-    // TODO: Validate Password Field
+
+    if (mValidateTor.isEmpty(str)) {
+      editText.setError("Field is empty!");
+    }
+
+    if (mValidateTor.isAtleastLength(str, 8)
+        && mValidateTor.hasAtleastOneDigit(str)
+        && mValidateTor.hasAtleastOneUppercaseCharacter(str)
+        && mValidateTor.hasAtleastOneSpecialCharacter(str)) {
+      Toast.makeText(this, "Valid Password!", Toast.LENGTH_SHORT).show();
+    } else {
+      editText.setError("Password needs to be of minimum length of 8 characters and should have " +
+          "atleast 1 digit, 1 upppercase letter and 1 special character ");
+    }
 
   }
 
   private void validateEmailField(EditText editText) {
     String str = editText.getText().toString();
-    // TODO: Validate Email Field
+
+    if (mValidateTor.isEmpty(str)) {
+      editText.setError("Field is empty!");
+    }
+
+    if (!mValidateTor.isEmail(str)) {
+      editText.setError("Invalid Email entered!");
+    } else {
+      Toast.makeText(this, "Valid Email!", Toast.LENGTH_SHORT).show();
+    }
   }
 }
