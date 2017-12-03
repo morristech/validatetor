@@ -33,4 +33,8 @@ ext {
   compileSdkVersion = targetSdkVersion
   buildToolsVersion = '27.0.1'
   supportLibVersion = '27.0.2'
+
+  // Library Info
+  libVersionCode = 1
+  libVersionName = '1.0.0'
 }
